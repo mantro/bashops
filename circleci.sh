@@ -48,9 +48,15 @@ echo "###> "
 git config --global user.email "circleci@circleci.com"
 git config --global user.name "CircleCI"
 
+echo "###> "
+echo "###> Shellcheck"
+echo "###> "
 cd /root/bashops
 cd src
 shellcheck -x ./*
 
+echo "###> "
+echo "###> bats"
+echo "###> "
 cd /root/bashops
 ./run_tests.sh
