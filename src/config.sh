@@ -1,0 +1,3 @@
+#!/bin/bash
+
+export BASHOPS_SECRETS_DIR="$BASHOPS_GITROOT"
