@@ -1,0 +1,21 @@
+version: 2.0
+jobs:
+  shellcheck:
+    docker:
+      - image: alpine:3.12.0
+
+    working_directory: /root/bashops
+
+    steps:
+      - checkout
+
+      - run:
+          name: ./circleci.sh
+          command: |
+            ./circleci.sh
+
+workflows:
+  version: 2
+  full:
+    jobs:
+      - shellcheck
