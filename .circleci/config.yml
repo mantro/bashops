@@ -12,6 +12,7 @@ jobs:
       - run:
           name: ./circleci.sh
           command: |
+            apk add bash
             cd /root/bashops
             /bin/bash ./circleci.sh
 
