@@ -25,12 +25,7 @@ function teardown() {
     :
 }
 
-@test "can bashops.sh be loaded" {
-    source "../src/bashops.sh"
-}
-
 @test "bashops loads colors.sh" {
-    source "../src/bashops.sh"
     type clr_green
 }
 
