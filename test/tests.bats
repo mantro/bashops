@@ -1,6 +1,11 @@
 #!/usr/bin/env bats
 set -euo pipefail
 
+if [[ -z "${GPG_USER:-}" ]]; then
+    echo "Please specify a GPG_USER (with private key)"
+    exit 1
+fi
+
 cd "$BATS_TEST_DIRNAME"
 TMP_DIR="$BATS_TEST_DIRNAME/tmp"
 
@@ -63,7 +68,7 @@ function teardown() {
     cd "$TMP_DIR"
     yes | blackbox_initialize >/dev/null || :
 
-    blackbox_addadmin "benjamin" >/dev/null
+    blackbox_addadmin "$GPG_USER" >/dev/null
     blackbox_register_new_file "ops/secrets/global/global.yaml" >/dev/null
     blackbox_decrypt_all_files >/dev/null
 
@@ -89,7 +94,7 @@ function teardown() {
     cd "$TMP_DIR"
     yes | blackbox_initialize >/dev/null || :
 
-    blackbox_addadmin "benjamin" >/dev/null
+    blackbox_addadmin "$GPG_USER" >/dev/null
     blackbox_register_new_file "ops/secrets/global/global.yaml" >/dev/null
     blackbox_register_new_file "ops/secrets/local/local.yaml" >/dev/null
     blackbox_decrypt_all_files >/dev/null
