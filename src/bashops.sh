@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
+if ! command -v yq >/dev/null; then
+    echo "Cannot find yq, please install it before"
+    exit 1
+fi
+
 # change into the directory of this script
 cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1
 BASHOPS_DIR="$(pwd)"
