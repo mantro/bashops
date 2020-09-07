@@ -10,9 +10,13 @@ jobs:
       - checkout
 
       - run:
+          name: Install dependencies
+          command: |
+            apk add bash shellcheck
+
+      - run:
           name: ./circleci.sh
           command: |
-            apk add bash
             cd /root/bashops
             /bin/bash ./circleci.sh
 
