@@ -13,7 +13,7 @@ jobs:
           name: ./circleci.sh
           command: |
             cd /root/bashops
-            ./circleci.sh
+            /bin/bash ./circleci.sh
 
 workflows:
   version: 2
