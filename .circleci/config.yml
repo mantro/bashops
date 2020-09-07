@@ -12,6 +12,7 @@ jobs:
       - run:
           name: ./circleci.sh
           command: |
+            cd /root/bashops
             ./circleci.sh
 
 workflows:
