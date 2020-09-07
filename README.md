@@ -1,5 +1,9 @@
 # bashops
 
+Collection of helper utilities for blackbox enabled repos.
+
+=> TODO: describe setup
+
 ## Installation
 
 ```bash
