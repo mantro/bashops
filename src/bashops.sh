@@ -107,7 +107,7 @@ function bashops_mergetarget() {
 function bashops_ensurekubecontext() {
 
     CTX=$(kubectl config view --minify --output 'jsonpath={..current-context}')
-    [[ "$SKIP_CHECK" != "yes" ]] &&
+    [[ "${SKIP_CHECK:-}" != "yes" ]] &&
         echo "Current context: ${CTX}. Continue? (yes/no): " &&
         read -r YES &&
         [[ $YES != "yes" ]] &&
