@@ -56,6 +56,7 @@ function bashops_checkdecrypted() {
         }
 
     done <<<"$FILES"
+    return 0
 }
 
 function bashops_mergesecrets() {
