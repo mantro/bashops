@@ -7,12 +7,12 @@ if ! command -v yq >/dev/null; then
 fi
 
 # change into the directory of this script
-cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1
-BASHOPS_DIR="$(pwd)"
+BASHOPS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 export BASHOPS_DIR
 
 # Load color support
-source "./colors.sh"
+# shellcheck source=./colors.sh
+source "$BASHOPS_DIR/colors.sh"
 
 BASHOPS_GITROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo -n '')"
 [[ -z "${BASHOPS_GITROOT:-}" ]] && clr_red "Not git repo found, bailing" && exit 1
@@ -73,6 +73,7 @@ function bashops_mergesecrets() {
     # merge files
 
     cd "$BASHOPS_SECRETS_DIR"
+
     for dir in *; do
         [[ ! -d "$dir" ]] && continue
 
@@ -84,6 +85,8 @@ function bashops_mergesecrets() {
 
         echo "$MERGED" | yq prefix - "$dir" >>"$BASHOPS_SECRETS_FILE"
     done
+
+    cd -
 }
 
 function bashops_readsecret() {
