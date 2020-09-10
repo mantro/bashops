@@ -86,7 +86,7 @@ function bashops_mergesecrets() {
         echo "$MERGED" | yq prefix - "$dir" >>"$BASHOPS_SECRETS_FILE"
     done
 
-    cd -
+    cd - >/dev/null
 }
 
 function bashops_readsecret() {
