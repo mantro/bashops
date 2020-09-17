@@ -91,7 +91,7 @@ function bashops_mergesecrets() {
 
 function bashops_readsecret() {
     OUTPUT=$(yq r "$BASHOPS_SECRETS_FILE" "${1}")
-    [[ -z "$OUTPUT" ]] && clr_yellow "Warning: secret ${1} yielded empty string" 1>&2
+    [[ -z "$OUTPUT" ]] && clr_red "secret ${1} yielded empty string" 1>&2 && exit 1
     echo "$OUTPUT"
 }
 
